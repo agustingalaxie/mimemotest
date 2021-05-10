@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
+
+.body {
+    background-color: lightblue;
+    height: 100vh;
+    font-family: 'Satisfy', cursive;
+  }
+.container{
+    margin-top: 1em;
+}
+.cuadro{
+    background-color: lemonchiffon;
+    padding: 40px;
+    width: 40px;
+    border: 3px solid black;
+    border-radius: 3px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    cursor: pointer;
+}
+.display{
+    padding: 30px;
+    border: 3px solid black;
+    border-radius: 3px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.button{
+    padding: 2em;
+    border: 3px solid black;
+    border-radius: 3px;
+}
+.button:hover{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
