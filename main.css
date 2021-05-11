@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
 
 .body {
-    background-color: lightblue;
+    background-color: #ffe1cd;
     height: 100vh;
     font-family: 'Satisfy', cursive;
   }
@@ -9,7 +9,7 @@
     margin-top: 1em;
 }
 .cuadro{
-    background-color: #fffacd;
+    background-color: #ebffcd;
     padding: 45px;
     width: 40px;
     border: 3px solid black;
@@ -23,6 +23,7 @@
     border: 3px solid black;
     border-radius: 3px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background-color: #fffacd;
 }
 .button{
     padding: 2em;
@@ -42,7 +43,7 @@
     transform-style: preserve-3d;
   }
   
-.clickeado .interior {
+.clickeado .contenido{
     transform: rotateY(180deg);
   }
   
@@ -55,12 +56,12 @@
   }
 
 .frente {
-    background-color: #fffacd;
+    background-color: #ebffcd;
     color: black;
   }
   
 .interior {
-    background-color: #d6d2aa;
+    background-color: transparent;
     color: #000;
     transform: rotateY(180deg);
   }
