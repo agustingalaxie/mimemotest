@@ -1,18 +1,74 @@
-const cuadros = document.querySelectorAll("cuadro");
+const $cuadros = document.querySelectorAll(".cuadro");
+const $botonInicio = document.querySelector(".button");
+const ciudades = ['buenos aires', 'paris', 'londres', 'estambul', 'hong kong', 'sidney', 'ciudad de mexico', 'ciudad del cabo', 'buenos aires', 'paris', 'londres', 'estambul', 'hong kong', 'sidney', 'ciudad de mexico', 'ciudad del cabo']
+const $ocultos = document.querySelectorAll(".oculto");
+let dadoVuelta = 0;
+let turno = 0;
+let historial = [];
 
-cuadros.onclick = function (){
-
+function habilitarCuadros() {
+    $cuadros.forEach(function (cuadro) {
+        cuadro.onclick = function () {
+            cuadroClickeado(cuadro.id);
+        }
+    })
 }
-const cuadro = document.getElementById("asd");
-cuadro.onclick = function (e){
-    e.target.className = "col-3 cuadro clickeado";
+
+function sortearCiudades(ciudades) {
+    for (let i = ciudades.length - 1; i > 0; i--) {
+        let indiceAleatorio = Math.floor(Math.random() * (i + 1));
+        let temporal = ciudades[i];
+        ciudades[i] = ciudades[indiceAleatorio];
+        ciudades[indiceAleatorio] = temporal;
+    };
+    return ciudades
+};
+
+function ponerCiudadesEnCuadros(ciudades) {
+    $ocultos.forEach(function (oculto, i) {
+        const texto = ciudades[i];
+        oculto.innerText = texto;
+    })
+};
+
+function cuadroClickeado(id) {
+    const cuadro = document.getElementById(id);
+    cuadro.className = "col-3 cuadro clickeado";
+    dadoVuelta++;
+    historial.push(cuadro.id);
+    checkearDadoVuelta();
+}
+
+function volverAGirar(id) {
+    const cuadro = document.getElementById(id);
+    cuadro.className = "col-3 cuadro";
+    dadoVuelta--;
+}
+
+
+function checkearDadoVuelta() {
+    if (dadoVuelta % 2 === 0) {
+        const ultimoID = historial[historial.length - 1];
+        const anteUltimoID = historial[historial.length - 2];
+        const ultimoElemento = document.getElementById(ultimoID);
+        const anteUltimoElemento = document.getElementById(anteUltimoID);
+        const ultimaCiudad = ultimoElemento.innerText;
+        const anteUltimaCiudad = anteUltimoElemento.innerText;
+        turno++
+        if (ultimaCiudad === anteUltimaCiudad) {
+        } else {
+            setTimeout(() => {volverAGirar(ultimoID)}, 1000);
+            setTimeout(() => {volverAGirar(anteUltimoID)}, 1000);
+        }
+    }
+}
+$botonInicio.onclick = function (e) {
     e.preventDefault;
+    sortearCiudades(ciudades);
+    ponerCiudadesEnCuadros(ciudades)
+    habilitarCuadros();
 }
-//function onclick de inicio
-    //function que atribuye valores a los cuadros, dos de cada valor
-    
-    //que el cuadro se abra desde el medio
-    
+
 
 //funcion onclick cuadro
 // "dar vuelta" el cuadro y mostrar un valor
