@@ -1,7 +1,9 @@
 const $cuadros = document.querySelectorAll(".cuadro");
 const $botonInicio = document.querySelector(".button");
-const ciudades = ['buenos aires', 'paris', 'londres', 'estambul', 'hong kong', 'sidney', 'ciudad de mexico', 'ciudad del cabo', 'buenos aires', 'paris', 'londres', 'estambul', 'hong kong', 'sidney', 'ciudad de mexico', 'ciudad del cabo']
+const ciudades = ['Buenos Aires', 'Paris', 'Londres', 'Estambul', 'Hong Kong', 'Sidney', 'Ciudad de Mexico', 'Ciudad del Cabo', 'Buenos Aires', 'Paris', 'Londres', 'Estambul', 'Hong Kong', 'Sidney', 'Ciudad de Mexico', 'Ciudad del Cabo']
 const $ocultos = document.querySelectorAll(".oculto");
+const audioClick = document.getElementById("audioClick")
+const audioVictoria = document.getElementById("audioVictoria")
 let dadoVuelta = 0;
 let turno = 0;
 let historial = [];
@@ -32,11 +34,17 @@ function ponerCiudadesEnCuadros(ciudades) {
 };
 
 function cuadroClickeado(id) {
+
     const cuadro = document.getElementById(id);
-    cuadro.className = "col-3 cuadro clickeado";
-    dadoVuelta++;
-    historial.push(cuadro.id);
-    checkearDadoVuelta();
+    audioClick.play();
+    let claseCuadro = cuadro.className;
+    if (claseCuadro === "col-3 cuadro") {
+        cuadro.className = "col-3 cuadro clickeado";
+        dadoVuelta++;
+        historial.push(cuadro.id);
+        checkearDadoVuelta();
+    } else {
+    }
 }
 
 function volverAGirar(id) {
@@ -54,25 +62,42 @@ function checkearDadoVuelta() {
         const anteUltimoElemento = document.getElementById(anteUltimoID);
         const ultimaCiudad = ultimoElemento.innerText;
         const anteUltimaCiudad = anteUltimoElemento.innerText;
-        turno++
+        turno++;
         if (ultimaCiudad === anteUltimaCiudad) {
+            checkearSiGano()
         } else {
-            setTimeout(() => {volverAGirar(ultimoID)}, 1000);
-            setTimeout(() => {volverAGirar(anteUltimoID)}, 1000);
+            dadoVuelta - 2;
+            setTimeout(() => { volverAGirar(ultimoID) }, 1000);
+            setTimeout(() => { volverAGirar(anteUltimoID) }, 1000);
         }
     }
 }
+function checkearSiGano() {
+    if (dadoVuelta === 16) {
+        const audioVictoria = document.getElementById("audioVictoria");
+        audioVictoria.play();
+        const visor = document.querySelector("h1");        
+        visor.innerText = `¡Muy bien! ¡Tardaste ${turno} turnos en completar el juego!`
+    }
+}
+function ocultarTodos() {
+    $cuadros.forEach(function(cuadro) {
+        cuadro.className = "col-3 cuadro";
+    });
+}
+function resetearContadores(){
+    dadoVuelta = 0;
+    turno = 0;
+    historial = [];
+}
 $botonInicio.onclick = function (e) {
     e.preventDefault;
-    sortearCiudades(ciudades);
-    ponerCiudadesEnCuadros(ciudades)
-    habilitarCuadros();
+    ocultarTodos();
+    resetearContadores();
+    setTimeout(() => {sortearCiudades(ciudades)}, 500);
+    setTimeout(() => {ponerCiudadesEnCuadros(ciudades)}, 500);
+    setTimeout(() => {habilitarCuadros()}, 500);
+    const visor = document.querySelector("h1");
+    visor.innerText = `Encuentra los nombres de ciudades`
 }
 
-
-//funcion onclick cuadro
-// "dar vuelta" el cuadro y mostrar un valor
-// "dar vuelta" otro cuadro y mostrar un valor
-// 1 segundo
-// si se acierta los dos valores juntos los cuadros quedan dados vuelta y cambian de color
-// si no los dos vuelven a esconderse

@@ -10,25 +10,26 @@
 }
 .cuadro{
     background-color: #ebffcd;
-    padding: 45px;
-    width: 40px;
-    border: 3px solid black;
+    padding: 3em;
+    width: 3em;
+    border: 4px solid black;
     border-radius: 3px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     cursor: pointer;
     perspective: 1000px
 }
 .display{
-    padding: 30px;
-    border: 3px solid black;
+    padding: 2em;
+    border: 4px solid black;
     border-radius: 3px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     background-color: #fffacd;
 }
 .button{
-    padding: 2em;
-    border: 3px solid black;
+    padding: 1em;
+    border: 4px solid black;
     border-radius: 3px;
+    font-size: 20px;
 }
 .button:hover{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -64,4 +65,11 @@
     background-color: transparent;
     color: #000;
     transform: rotateY(180deg);
+  }
+
+ @media screen and (max-width: 780px) {
+    .button {
+      padding: 2em;
+      width: 2em;
+    }
   }
