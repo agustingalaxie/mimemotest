@@ -12,9 +12,9 @@ function habilitarCuadros() {
     $cuadros.forEach(function (cuadro) {
         cuadro.onclick = function () {
             cuadroClickeado(cuadro.id);
-        }
-    })
-}
+        };
+    });
+};
 
 function sortearCiudades(ciudades) {
     for (let i = ciudades.length - 1; i > 0; i--) {
@@ -34,7 +34,6 @@ function ponerCiudadesEnCuadros(ciudades) {
 };
 
 function cuadroClickeado(id) {
-
     const cuadro = document.getElementById(id);
     audioClick.play();
     let claseCuadro = cuadro.className;
@@ -44,15 +43,14 @@ function cuadroClickeado(id) {
         historial.push(cuadro.id);
         checkearDadoVuelta();
     } else {
-    }
-}
+    };
+};
 
 function volverAGirar(id) {
     const cuadro = document.getElementById(id);
     cuadro.className = "col-3 cuadro";
     dadoVuelta--;
-}
-
+};
 
 function checkearDadoVuelta() {
     if (dadoVuelta % 2 === 0) {
@@ -69,27 +67,31 @@ function checkearDadoVuelta() {
             dadoVuelta - 2;
             setTimeout(() => { volverAGirar(ultimoID) }, 1000);
             setTimeout(() => { volverAGirar(anteUltimoID) }, 1000);
-        }
-    }
-}
+        };
+    };
+};
+
 function checkearSiGano() {
     if (dadoVuelta === 16) {
         const audioVictoria = document.getElementById("audioVictoria");
         audioVictoria.play();
         const visor = document.querySelector("h1");        
-        visor.innerText = `¡Muy bien! ¡Tardaste ${turno} turnos en completar el juego!`
-    }
-}
+        visor.innerText = `¡Muy bien! ¡Tardaste ${turno} turnos en completar el juego!`;
+    };
+};
+
 function ocultarTodos() {
     $cuadros.forEach(function(cuadro) {
         cuadro.className = "col-3 cuadro";
     });
-}
+};
+
 function resetearContadores(){
     dadoVuelta = 0;
     turno = 0;
     historial = [];
-}
+};
+
 $botonInicio.onclick = function (e) {
     e.preventDefault;
     ocultarTodos();
@@ -98,6 +100,6 @@ $botonInicio.onclick = function (e) {
     setTimeout(() => {ponerCiudadesEnCuadros(ciudades)}, 500);
     setTimeout(() => {habilitarCuadros()}, 500);
     const visor = document.querySelector("h1");
-    visor.innerText = `Encuentra los nombres de ciudades`
-}
+    visor.innerText = `Encuentra los nombres de ciudades`;
+};
 
