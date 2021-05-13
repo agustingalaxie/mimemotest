@@ -4,7 +4,11 @@
   "description": "memotest by agustingalaxie",
   "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cyppres-run": "cypress run",
+    "cypress-dev": "cypress open",
+    "cypress:open": "cypress open",
+    "start": "http-server -c-1 -p 8081"
   },
   "repository": {
     "type": "git",
@@ -17,6 +21,8 @@
   },
   "homepage": "https://github.com/agustingalaxie/mimemotest#readme",
   "dependencies": {
-    "bootstrap": "^5.0.0"
+    "bootstrap": "^5.0.0",
+    "cypress": "^7.3.0",
+    "http-server": "^0.12.3"
   }
 }
